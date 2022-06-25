@@ -5,18 +5,22 @@ export const setInitialDataAction: IsetInitialDataAction = (table) => {
     }
 }
 
-export const sortTableAction: IsortTableAction = (table) => {
+export const sortTableAction: IsortTableAction = (table, sortByColumn, isAscending) => {
     
-    const sortedTable = table.sort((a, b) => {
+    const sortedTable = [...table].sort((a, b) => {
 
-        const var1 = a.firstName || ""
-        const var2 = b.firstName || ""
+        const var1 = a[sortByColumn] || null
+        const var2 = b[sortByColumn] || null
 
-        if (typeof var1 === 'string' && typeof var2 === 'string') {
-            return var1.localeCompare(var2)
+        if (!var1 || !var2) {
+            return 1
         }
 
-        return -1
+        if (typeof var1 === 'string' && typeof var2 === 'string') {
+            return isAscending ? var1.localeCompare(var2) : var2.localeCompare(var1)
+        }
+
+        return 1
         
     })
 

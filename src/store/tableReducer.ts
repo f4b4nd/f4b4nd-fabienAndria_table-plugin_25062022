@@ -2,12 +2,11 @@ const initialTableData: Ttable = []
 
 export const tableReducer: ItableReducer = function (state = initialTableData, action) {
     
-    //const data = action?.payload?.data || []
-
     switch (action.type) {
 
         case 'SET_INITIAL_DATA':
-            return action?.payload?.data || []
+            const initData = action?.payload?.data || state
+            return [...initData]
 
         case 'SORT_TABLE':
             const sortedData = action?.payload?.data || state
@@ -16,4 +15,5 @@ export const tableReducer: ItableReducer = function (state = initialTableData, a
         default:
             return state
     }
+
 }
