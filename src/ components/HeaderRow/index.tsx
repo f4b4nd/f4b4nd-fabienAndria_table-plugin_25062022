@@ -19,23 +19,24 @@ const HeaderRow = ({rowData}: IHeaderRow) => {
                 <HeaderRow.Cell
                     key={idx} 
                     data={item}
-                    activeColumn={activeColumn}
-                    setActiveColumn={setActiveColumn}
-                />
+                >
+                    <HeaderRow.SortIcon 
+                        sortByColumn={item}
+                        activeColumn={activeColumn}
+                        setActiveColumn={setActiveColumn}
+                    />
+
+                </HeaderRow.Cell>
             ))}
         </Container>
     )
 
 }
 
-HeaderRow.Cell = ({data, activeColumn, setActiveColumn}: IHeaderRowCell) => {
+HeaderRow.Cell = ({data, children}: IHeaderRowCell) => {
     return <Cell>
-        {data} 
-        <HeaderRow.SortIcon 
-            sortByColumn={data}
-            activeColumn={activeColumn}
-            setActiveColumn={setActiveColumn}
-        />
+        {data}
+        {children}
     </Cell>
 }
 
@@ -58,9 +59,13 @@ HeaderRow.SortIcon = function SortIcon ({sortByColumn, activeColumn, setActiveCo
 
     return (
         <span onClick={handleClick}>
+            
             {(activeColumn !== sortByColumn || activeColumn === "") && <FontAwesomeIcon icon={faSort} />}
+
             {activeColumn === sortByColumn && !isAscending && <FontAwesomeIcon icon={faSortAsc} />}
+
             {activeColumn === sortByColumn && isAscending && <FontAwesomeIcon icon={faSortDesc} />}
+
         </span>
     )
 }

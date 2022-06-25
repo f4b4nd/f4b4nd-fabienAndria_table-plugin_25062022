@@ -29,8 +29,7 @@ interface IHeaderRow {
 
 interface IHeaderRowCell {
     data: string,
-    activeColumn: string,
-    setActiveColumn: React.Dispatch<React.SetStateAction<string>>
+    children: React.ReactNode,
 }
 
 interface IHeaderRowSortIcon {
