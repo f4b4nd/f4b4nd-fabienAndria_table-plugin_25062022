@@ -1,8 +1,10 @@
 import './App.css'
+import Table from './ components/Table'
+import employeesData from './fixtures/employees.json'
 
 function App() {
     return (
-        <div> Table </div>
+        <Table data={employeesData} />
     )
 }
 
