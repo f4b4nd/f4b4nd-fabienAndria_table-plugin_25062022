@@ -1,20 +1,9 @@
 import { Container, Cell, Group } from "./style"
 
-interface IDataRow {
-    [key: string]: any
-}
-
-interface ICell {
-    data: string | number | null
-}
-
-interface IGroup {
-    children?: React.ReactNode
-}
 
 const DataRow = ({rowData}: IDataRow) => {
     
-    const values: any[] = Object.values(rowData)
+    const values: tCell[] = Object.values(rowData)
 
     return (
         <Container>
@@ -31,11 +20,11 @@ const DataRow = ({rowData}: IDataRow) => {
 }
 
 
-DataRow.Cell = ({data}: ICell) => {
+DataRow.Cell = ({data}: IDataRowCell) => {
     return <Cell> {data} </Cell>
 }
 
-DataRow.Group = ({children}: IGroup) => {
+DataRow.Group = ({children}: IChildren) => {
     return <Group> {children} </Group>
 }
 

@@ -1,16 +1,5 @@
 import { Container, Cell, Group } from "./style"
 
-interface IHeaderRow {
-    rowData: string[]
-}
-
-interface ICell {
-    data: string
-}
-
-interface IGroup {
-    children?: React.ReactNode
-}
 
 
 const HeaderRow = ({rowData}: IHeaderRow) => {
@@ -28,11 +17,11 @@ const HeaderRow = ({rowData}: IHeaderRow) => {
     )
 }
 
-HeaderRow.Cell = ({data}: ICell) => {
+HeaderRow.Cell = ({data}: IHeaderRowCell) => {
     return <Cell> {data} </Cell>
 }
 
-HeaderRow.Group = ({children}: IGroup) => {
+HeaderRow.Group = ({children}: IChildren) => {
     return <Group> {children} </Group>
 }
 

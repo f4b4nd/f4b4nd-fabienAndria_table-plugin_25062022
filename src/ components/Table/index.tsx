@@ -3,17 +3,9 @@ import { Container } from "./style"
 import HeaderRow from "../HeaderRow"
 import DataRow from "../DataRow"
 
-interface ObjectProps {
-    [key: string]: any
-}
-
-interface ITable {
-    data: ObjectProps[]
-}
-
 const Table = ({data}: ITable) => {
 
-    const headers: Array<string> = Object.keys(data[0])
+    const headers: string[] = Object.keys(data[0])
 
     return (
         <Container>
