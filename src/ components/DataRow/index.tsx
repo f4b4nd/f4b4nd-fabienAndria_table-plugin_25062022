@@ -21,11 +21,11 @@ const DataRow = ({rowData}: IDataRow) => {
 
 
 DataRow.Cell = ({data}: IDataRowCell) => {
-    return <Cell> {data} </Cell>
+    return <Cell>{data}</Cell>
 }
 
 DataRow.Group = ({children}: IChildren) => {
-    return <Group> {children} </Group>
+    return <Group>{children}</Group>
 }
 
 export default DataRow

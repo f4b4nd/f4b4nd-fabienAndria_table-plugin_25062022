@@ -20,10 +20,9 @@ function App () {
     }, [dispatch])
 
     useEffect(() => {
-
         setInitialData(employeesData)
-        console.log('ini')
-    })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <Table data={tableStore} />

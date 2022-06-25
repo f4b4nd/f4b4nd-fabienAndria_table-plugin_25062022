@@ -1,5 +1,10 @@
+type ActionTypes = 
+    | 'SET_INIT_DATA' 
+    | 'SORT_TABLE'
+
+
 interface Action {
-    type: any,
+    type: ActionTypes,
     payload?: DefaultObject[]
 }
 
