@@ -2,21 +2,26 @@ interface IChildren {
     children?: React.ReactNode
 }
 
-interface ObjectProps<T> {
+interface DefaultObject<T> {
     [key: string]: T
 }
 
-type tCell = string | number | null
+type Tdata = string | number | null
+
+type TtableRow = DefaultObject<Tdata>
+
+type Ttable = TtableRow[]
+
 
 /**
  * TABLE
  */
 interface ITable {
-    data: ObjectProps<tCell>[]
+    data: Ttable
 }
 
 /**
- * HEADEROW
+ * HEADER ROW
  */
 interface IHeaderRow {
     rowData: string[]
@@ -27,13 +32,12 @@ interface IHeaderRowCell {
 }
 
 /**
- * DATAROW
+ * DATA ROW
  */
 interface IDataRow {
-    rowData: ObjectProps<tCell>
+    rowData: TtableRow
 }
 
 interface IDataRowCell {
-    data: tCell
+    data: Tdata
 }
-

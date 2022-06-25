@@ -3,7 +3,7 @@ import { Container, Cell, Group } from "./style"
 
 const DataRow = ({rowData}: IDataRow) => {
     
-    const values: tCell[] = Object.values(rowData)
+    const values = Object.values(rowData)
 
     return (
         <Container>
