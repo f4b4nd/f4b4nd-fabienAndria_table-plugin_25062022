@@ -32,7 +32,3 @@ const Table = ({data}: ITable) => {
 }
 
 export default Table
-
-/*
-
-*/
