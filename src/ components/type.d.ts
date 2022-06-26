@@ -24,7 +24,7 @@ interface ITable {
  * HEADER ROW
  */
 interface IHeaderRow {
-    rowData: string[]
+    dataTypes: DefaultObject<string>
 }
 
 interface IHeaderRowCell {
@@ -34,6 +34,7 @@ interface IHeaderRowCell {
 
 interface IHeaderRowSortIcon {
     sortByColumn: string,
+    dataType: string,
     activeColumn: string,
     setActiveColumn: React.Dispatch<React.SetStateAction<string>>
 }

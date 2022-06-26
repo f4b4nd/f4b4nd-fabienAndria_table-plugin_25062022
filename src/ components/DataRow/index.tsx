@@ -7,11 +7,12 @@ const DataRow = ({rowData}: IDataRow) => {
 
     return (
         <Container>
+
             {values.map((item, idx)=> (
 
                 <DataRow.Cell 
                     key={idx} 
-                    data={item} 
+                    data={item}
                 />
     
             ))}

@@ -1,30 +1,36 @@
+import { useMemo } from "react"
 import { Container } from "./style"
 
 import HeaderRow from "../HeaderRow"
 import DataRow from "../DataRow"
+import getDataTypes from "../../helpers/dataTypes"
 
 const Table = ({data}: ITable) => {
 
-    const headers: string[] = data.length > 0 ? Object.keys(data[0]): []
+    const dataTypes = useMemo(() => {
+        return getDataTypes(data)
+    }, [data])
 
     return (
         <Container>
-            
-            {headers.length > 0 &&
-                <HeaderRow.Group>
-                    <HeaderRow rowData={headers} />
-                </HeaderRow.Group>
-            }
 
             {data.length > 0 &&
+                <>
+
+                <HeaderRow.Group>
+                    <HeaderRow dataTypes={dataTypes} />
+                </HeaderRow.Group>
+            
                 <DataRow.Group>
                     {data.map((item, idx) => (
                         <DataRow 
                             key={idx} 
-                            rowData={item} 
+                            rowData={item}
                         />
                     ))}
                 </DataRow.Group>
+                
+                </>
             }
 
         </Container>

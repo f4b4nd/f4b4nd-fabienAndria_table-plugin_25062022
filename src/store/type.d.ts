@@ -32,5 +32,5 @@ interface ItableSelector {
 }
 
 interface IsortTableAction {
-    (table: Ttable, sortByColumn: string, isAscending: boolean): Action
+    (table: Ttable, sortByColumn: string, dataType: string, isAscending: boolean): Action
 }
