@@ -1,7 +1,7 @@
 export const setInitialDataAction: IsetInitialDataAction = (table) => {
     return {
         type: 'SET_INITIAL_DATA',
-        payload: {data: table}
+        payload: {data: [...table]}
     }
 }
 
@@ -13,7 +13,7 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
         return [item1, item2]
     }
 
-    const compareNullValues = (a: Tdata, b: Tdata) => {
+    const nullValuesComparison = (a: Tdata, b: Tdata) => {
         // null values are sent at the end of the table
         return !b ? -1 : 1  
     }
@@ -38,21 +38,21 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
         case 'number':
             sortedTable = [...table].sort((a, b) => {
                 const [item1, item2] = getItemsToCompare(a, b)
-                if (!item1 || !item2) return compareNullValues(item1, item2)
+                if (!item1 || !item2) return nullValuesComparison(item1, item2)
                 return numericComparison(item1 as number, item2 as number)
             })
             break
         case 'date':
             sortedTable = [...table].sort((a, b) => {
                 const [item1, item2] = getItemsToCompare(a, b)
-                if (!item1 || !item2) return compareNullValues(item1, item2)
+                if (!item1 || !item2) return nullValuesComparison(item1, item2)
                 return dateComparison(item1 as string, item2 as string)
             })
             break
         case 'string':
             sortedTable = [...table].sort((a, b) => {
                 const [item1, item2] = getItemsToCompare(a, b)
-                if (!item1 || !item2) return compareNullValues(item1, item2)
+                if (!item1 || !item2) return nullValuesComparison(item1, item2)
                 return stringComparison(item1 as string, item2 as string)
             })
             break
@@ -64,6 +64,18 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
     return {
         type: 'SORT_TABLE',
         payload: {data: sortedTable},
+    }
+
+}
+
+export const displaySlicedTableAction: IdisplaySlicedTableAction = (table) => {
+
+    const limitTableRows = 10
+    const slicedTable = [...table].slice(0, limitTableRows)
+    
+    return {
+        type: 'DISPLAY_SLICED_TABLE',
+        payload: {data: slicedTable}
     }
 
 }

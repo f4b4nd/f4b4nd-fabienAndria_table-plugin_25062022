@@ -2,6 +2,10 @@ interface IChildren {
     children?: React.ReactNode
 }
 
+interface RestProps {
+    [key: string]: any,
+}
+
 interface DefaultObject<T> {
     [key: string]: T
 }
@@ -48,4 +52,24 @@ interface IDataRow {
 
 interface IDataRowCell {
     data: Tdata
+}
+
+/**
+ * SLICER
+ */
+
+interface ISlicer {
+    children?: React.ReactNode
+}
+
+interface ISlicerSelect {
+    children?: React.ReactNode
+}
+
+interface ISlicerSelectOption extends RestProps {
+    children?: React.ReactNode
+}
+
+interface ISlicerText {
+    children?: React.ReactNode
 }

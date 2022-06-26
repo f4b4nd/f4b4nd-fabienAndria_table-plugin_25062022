@@ -2,6 +2,7 @@ import { useCallback, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
 import Table from './ components/Table'
+import SlicerContainer from "./containers/slicer"
 
 import { setInitialDataAction } from "./store/tableActions"
 import { tableSelector } from "./store/tableSelector"
@@ -25,7 +26,11 @@ function App () {
     }, [])
 
     return (
-        <Table data={tableStore} />
+        <>
+            <SlicerContainer />
+
+            <Table data={tableStore} />
+        </>
     )
 }
 

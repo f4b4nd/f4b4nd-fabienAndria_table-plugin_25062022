@@ -1,7 +1,7 @@
 type ActionTypes = 
     | 'SET_INITIAL_DATA' 
     | 'SORT_TABLE'
-
+    | 'DISPLAY_SLICED_TABLE'
 
 interface Action {
     type: ActionTypes,
@@ -33,4 +33,8 @@ interface ItableSelector {
 
 interface IsortTableAction {
     (table: Ttable, sortByColumn: string, dataType: string, isAscending: boolean): Action
+}
+
+interface IdisplaySlicedTableAction {
+    (table: Table): Action
 }
