@@ -11,7 +11,11 @@ export const tableReducer: ItableReducer = function (state = initialTableData, a
         case 'SORT_TABLE':
             const sortedData = action?.payload?.data || state
             return [...sortedData]
-            
+        
+        case 'DISPLAY_SLICED_TABLE':
+            const slicedData = action?.payload?.data || state
+            return [...slicedData]
+        
         default:
             return state
     }

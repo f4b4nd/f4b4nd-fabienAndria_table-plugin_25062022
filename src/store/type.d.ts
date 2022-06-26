@@ -36,5 +36,5 @@ interface IsortTableAction {
 }
 
 interface IdisplaySlicedTableAction {
-    (table: Table): Action
+    (table: Ttable, limitTableRows: string): Action
 }

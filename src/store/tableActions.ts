@@ -68,11 +68,13 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
 
 }
 
-export const displaySlicedTableAction: IdisplaySlicedTableAction = (table) => {
+export const displaySlicedTableAction: IdisplaySlicedTableAction = (table, limitTableRows) => {
 
-    const limitTableRows = 10
-    const slicedTable = [...table].slice(0, limitTableRows)
-    
+    const parsedLimit = parseInt(limitTableRows)
+
+    const slicedTable = parsedLimit ? [...table].slice(0, parsedLimit) : [...table]
+
+    //console.log('limit:', limitTableRows, '#', slicedTable)
     return {
         type: 'DISPLAY_SLICED_TABLE',
         payload: {data: slicedTable}

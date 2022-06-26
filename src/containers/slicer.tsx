@@ -9,10 +9,10 @@ const SlicerContainer: React.FC = () => {
 
                 Show
 
-                <Slicer.Select>
+                <Slicer.Select defaultValue={"all"} >
 
                     <Slicer.SelectOption value="10">10</Slicer.SelectOption>
-                    
+
                     <Slicer.SelectOption value="25">25</Slicer.SelectOption>
 
                     <Slicer.SelectOption value="50">50</Slicer.SelectOption>

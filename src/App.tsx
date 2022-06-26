@@ -29,7 +29,7 @@ function App () {
         <>
             <SlicerContainer />
 
-            <Table data={tableStore} />
+            <Table data={tableStore.slice(0, 150)} />
         </>
     )
 }

@@ -62,7 +62,7 @@ interface ISlicer {
     children?: React.ReactNode
 }
 
-interface ISlicerSelect {
+interface ISlicerSelect extends RestProps {
     children?: React.ReactNode
 }
 
