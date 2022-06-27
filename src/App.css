@@ -1,0 +1,9 @@
+.table-container {
+    width: 90vw;
+    margin: 1em auto;
+}
+
+.table-container .row {
+    display: flex;
+    justify-content: space-between;
+}

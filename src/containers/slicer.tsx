@@ -5,7 +5,7 @@ const SlicerContainer: React.FC = () => {
     return (
         <Slicer>
 
-            <Slicer.Text>
+            <Slicer.Label>
 
                 Show
 
@@ -25,7 +25,7 @@ const SlicerContainer: React.FC = () => {
 
                 entries
 
-            </Slicer.Text>
+            </Slicer.Label>
 
         </Slicer>
     )

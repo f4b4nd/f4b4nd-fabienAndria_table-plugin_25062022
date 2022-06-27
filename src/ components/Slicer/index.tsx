@@ -4,7 +4,7 @@ import { displaySlicedTableAction } from "../../store/tableActions"
 
 import { tableSelector } from "../../store/tableSelector"
 
-import { Container, Select, Text } from "./style"
+import { Container, Select, Label } from "./style"
 
 
 const Slicer = ({children}: ISlicer) => {
@@ -53,11 +53,11 @@ Slicer.SelectOption = ({children,  ...restProps}: ISlicerSelectOption) => {
     )
 }
 
-Slicer.Text = ({children}: ISlicerText) => {
+Slicer.Label = ({children}: ISlicerLabel) => {
     return (
-        <Text>
+        <Label>
             {children}
-        </Text>
+        </Label>
     )
 }
 

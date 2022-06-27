@@ -39,7 +39,7 @@ const HeaderRow = ({dataTypes}: IHeaderRow) => {
 HeaderRow.Cell = ({data, children}: IHeaderRowCell) => {
     return (
         <Cell>
-            {data}
+            <span>{data}</span>
             {children}
         </Cell>
     )
@@ -63,7 +63,7 @@ HeaderRow.SortIcon = function SortIcon ({sortByColumn, dataType, activeColumn, s
     }
 
     return (
-        <span onClick={handleClick}>
+        <span className="sort-icon" onClick={handleClick}>
 
             {(activeColumn !== sortByColumn || activeColumn === "") && <FontAwesomeIcon icon={faSort} />}
 

@@ -6,4 +6,4 @@ export const Select = styled.select`
     margin: 0 0.5em;
 `
 
-export const Text = styled.label``
+export const Label = styled.label``

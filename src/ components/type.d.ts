@@ -70,6 +70,17 @@ interface ISlicerSelectOption extends RestProps {
     children?: React.ReactNode
 }
 
-interface ISlicerText {
+interface ISlicerLabel {
+    children?: React.ReactNode
+}
+
+/**
+ * SEARCHBAR
+ */
+
+ interface ISearchbarInput extends RestProps {
+}
+
+interface ISearchbarLabel {
     children?: React.ReactNode
 }
