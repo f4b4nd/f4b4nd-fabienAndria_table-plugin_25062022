@@ -1,4 +1,6 @@
-const initialTableData: Ttable = []
+import initialTableData from '../fixtures/employees.json'
+
+//const initialTableData: Ttable = []
 
 export const tableReducer: ItableReducer = function (state = initialTableData, action) {
     
@@ -13,9 +15,25 @@ export const tableReducer: ItableReducer = function (state = initialTableData, a
             return [...sortedData]
         
         case 'DISPLAY_SLICED_TABLE':
-            const slicedData = action?.payload?.data || state
+
+            let slicedData: Ttable
+
+            const maxTableRows = action?.payload?.maxTableRows
+
+            if (!maxTableRows) {
+                slicedData = initialTableData
+            }
+
+            else if (maxTableRows >= state.length) {
+                slicedData = initialTableData.slice(0, maxTableRows) 
+            }
+
+            else {
+                slicedData = state.slice(0, maxTableRows)
+            }
+            
             return [...slicedData]
-        
+
         default:
             return state
     }

@@ -14,7 +14,7 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
     }
 
     const nullValuesComparison = (a: Tdata, b: Tdata) => {
-        // null values are sent at the end of the table
+        // null values are sorted at the end of the table
         return !b ? -1 : 1  
     }
 
@@ -23,7 +23,7 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
         return isAscending ? comparator : comparator * (-1)
     }
 
-    const dateComparison = (a: string, b: string) => {
+    const dateStringComparison = (a: string, b: string) => {
         const comparator = new Date(a) > new Date(b) ? 1 : -1
         return isAscending ? comparator : comparator * (-1)
     }
@@ -46,7 +46,7 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
             sortedTable = [...table].sort((a, b) => {
                 const [item1, item2] = getItemsToCompare(a, b)
                 if (!item1 || !item2) return nullValuesComparison(item1, item2)
-                return dateComparison(item1 as string, item2 as string)
+                return dateStringComparison(item1 as string, item2 as string)
             })
             break
         case 'string':
@@ -68,16 +68,14 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
 
 }
 
-export const displaySlicedTableAction: IdisplaySlicedTableAction = (table, limitTableRows) => {
+export const displaySlicedTableAction: IdisplaySlicedTableAction = (table, maxTableRows) => {
 
-    const parsedLimit = parseInt(limitTableRows)
-
-    const slicedTable = parsedLimit ? [...table].slice(0, parsedLimit) : [...table]
-
-    //console.log('limit:', limitTableRows, '#', slicedTable)
     return {
         type: 'DISPLAY_SLICED_TABLE',
-        payload: {data: slicedTable}
+        payload: {
+            data: table,
+            maxTableRows: parseInt(maxTableRows) || NaN
+        }
     }
 
 }

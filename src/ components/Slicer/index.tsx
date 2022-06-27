@@ -18,26 +18,26 @@ const Slicer = ({children}: ISlicer) => {
 
 Slicer.Select = function SlicerSelect ({children, ...restProps}: ISlicerSelect) {
 
-    const [limitTableRows, setLimitTableRows] = useState<string>("")
+    const [maxTableRows, setMaxTableRows] = useState<string>("")
 
     const tableStore = useSelector(tableSelector)
     const dispatch = useDispatch()
 
-    const displaySlicedTable = useCallback((table: Ttable, limitTableRows: string) => {
-        dispatch(displaySlicedTableAction(table, limitTableRows))
+    const displaySlicedTable = useCallback((table: Ttable, maxTableRows: string) => {
+        dispatch(displaySlicedTableAction(table, maxTableRows))
     }, [dispatch])
 
     useEffect(() => {
-        displaySlicedTable(tableStore, limitTableRows)
-        console.log('newlim', limitTableRows)
+        displaySlicedTable(tableStore, maxTableRows)
+        //console.log('newlim', limitTableRows)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [limitTableRows])
+    }, [maxTableRows])
 
     return (
         <Select
             {...restProps}
             onChange={(e) => {
-                setLimitTableRows(e.target.value)
+                setMaxTableRows(e.target.value)
             }}
         >
             {children}
