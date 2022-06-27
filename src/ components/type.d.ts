@@ -48,6 +48,7 @@ interface IHeaderRowSortIcon {
  */
 interface IDataRow {
     rowData: TtableRow
+    isEven: boolean
 }
 
 interface IDataRowCell {

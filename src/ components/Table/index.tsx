@@ -26,6 +26,7 @@ const Table = ({data}: ITable) => {
                         <DataRow 
                             key={idx} 
                             rowData={item}
+                            isEven={idx % 2 === 0}
                         />
                     ))}
                 </DataRow.Group>
