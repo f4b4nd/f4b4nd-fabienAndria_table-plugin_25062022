@@ -24,7 +24,7 @@ export default getDataTypes
 
 const getType = (data: TtableRow[], colName: string): string => {
 
-    const defaultType = "string"
+    const defaultType = 'string'
 
     const dataType: string = data.reduce((acc, row) => {
 
@@ -32,12 +32,14 @@ const getType = (data: TtableRow[], colName: string): string => {
 
         if (!item) return ""
 
-        if (typeof item === "number") return "number"
+        if (typeof item === 'number') return 'number'
 
-        const response = isDate(`${item}`) ? 'date' : typeof item
+        if (isDate(`${item}`)) return 'date'
 
-        if (acc === "" && response) {
-            return response
+        const typeMatch = typeof item === 'object' ? null : typeof item 
+
+        if (acc === "" && typeMatch) {
+            return typeMatch
         }
 
         return acc

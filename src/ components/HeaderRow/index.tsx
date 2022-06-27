@@ -17,13 +17,13 @@ const HeaderRow = ({dataTypes}: IHeaderRow) => {
 
     return (
         <Container>
-            {colNames.map((item, idx)=> (
+            {colNames.map((colName, idx)=> (
 
-                <HeaderRow.Cell key={idx} data={item}>
+                <HeaderRow.Cell key={idx} data={colName}>
             
                     <HeaderRow.SortIcon 
-                        sortByColumn={item}
-                        dataType={dataTypes[item]}
+                        sortByColumn={colName}
+                        dataType={dataTypes[colName]}
                         activeColumn={activeColumn}
                         setActiveColumn={setActiveColumn}
                     />

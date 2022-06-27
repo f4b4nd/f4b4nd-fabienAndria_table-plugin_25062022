@@ -15,7 +15,7 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
 
     const nullValuesComparison = (a: Tdata, b: Tdata) => {
         // null values are sorted at the end of the table
-        return !b ? -1 : 1  
+        return !b ? -1 : 1
     }
 
     const numericComparison = (a: number, b: number) => {
@@ -29,7 +29,9 @@ export const sortTableAction: IsortTableAction = (table, sortByColumn, dataType,
     }
 
     const stringComparison = (a: string, b: string) => {
-        return isAscending ? a.localeCompare(b) : b.localeCompare(a)
+        const ascendingComparator = a.localeCompare(b, 'en-US', {numeric: true})
+        const descendingComparator = b.localeCompare(a, 'en-US', {numeric: true})
+        return isAscending ? ascendingComparator : descendingComparator
     }
 
     let sortedTable: Ttable
