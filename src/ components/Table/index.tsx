@@ -12,7 +12,6 @@ const Table = ({results, setResults}: ITable) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    
     return (
         <Container>
 

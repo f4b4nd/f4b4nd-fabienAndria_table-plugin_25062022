@@ -1,1 +1,0 @@
-export const tableSelector: ItableSelector = ({table}) => table
