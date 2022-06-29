@@ -1,9 +1,10 @@
 import { useMemo } from "react"
+import getDataTypes from "../../helpers/dataTypes"
+
 import { Container } from "./style"
 
 import HeaderRow from "../HeaderRow"
 import DataRow from "../DataRow"
-import getDataTypes from "../../helpers/dataTypes"
 
 const Table = ({results, setResults}: ITable) => {
 

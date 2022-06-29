@@ -1,19 +1,19 @@
 import { Container, Input, Label } from "./style"
 
-const Searchbar = () => {
+const Searchbar = ({setInputValue}: ISearchbar) => {
 
     return (
         <Container>
             <Label>
                 Search :
-                <Searchbar.Input/>
+                <Searchbar.Input setInputValue={setInputValue} />
             </Label>
         </Container>
     )
 }
 
-Searchbar.Input = ({...restProps}: ISearchbarInput) => {
-    return <Input {...restProps} />
+Searchbar.Input = ({setInputValue}: ISearchbarInput) => {
+    return <Input onChange={(e) => setInputValue(e.target.value)} />
 }
 
 Searchbar.Label = ({children}: ISearchbarLabel) => {

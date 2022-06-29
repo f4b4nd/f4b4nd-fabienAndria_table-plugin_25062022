@@ -22,7 +22,7 @@ type Ttable = TtableRow[]
  */
 interface ITable {
     results: Ttable,
-    setResults: React.Dispatch<React.SetStateAction<Ttable>>
+    setResults: React.Dispatch<React.SetStateAction<Ttable>>,
 }
 
 /**
@@ -85,7 +85,12 @@ interface ISlicerLabel {
  * SEARCHBAR
  */
 
- interface ISearchbarInput extends RestProps {
+interface ISearchbar {
+    setInputValue: React.Dispatch<React.SetStateAction<string>>
+}
+
+ interface ISearchbarInput {
+    setInputValue: React.Dispatch<React.SetStateAction<string>>
 }
 
 interface ISearchbarLabel {

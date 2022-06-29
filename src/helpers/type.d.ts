@@ -19,3 +19,11 @@ interface IsliceTable {
     initialData: Ttable, 
     maxTableRows: string
 }
+
+/**
+ * QUERY TABLE
+ */
+
+interface IqueryTable {
+    (data: Ttable, query: string): Ttable
+}

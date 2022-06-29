@@ -5,9 +5,9 @@ import SlicerContainer from "./containers/slicer"
 import Searchbar from "./ components/Searchbar"
 
 import sliceTable from "./helpers/sliceTable"
+import queryTable from "./helpers/queryTable"
 
 import initialData from './fixtures/employees.json'
-
 
 import './App.css'
 
@@ -18,12 +18,19 @@ function App () {
     const [maxTableRows, setMaxTableRows] = useState<string>("")
 
     const [inputValue, setInputValue] = useState<string>("")
-    
+
     useEffect(() => {
         const slicedResults = sliceTable({data: results, initialData, maxTableRows})
         setResults(slicedResults)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [maxTableRows])
+    
+    useEffect(() => {
+        const filteredResults = queryTable(initialData, inputValue)
+        setResults(filteredResults)
+    }, [inputValue])
+
+    //console.log(Date.now())
 
     return (
         
@@ -33,7 +40,7 @@ function App () {
 
                 <SlicerContainer setMaxTableRows={setMaxTableRows} />
 
-                <Searchbar />
+                <Searchbar setInputValue={setInputValue}/>
 
             </div>
 
