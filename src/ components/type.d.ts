@@ -96,3 +96,16 @@ interface ISearchbar {
 interface ISearchbarLabel {
     children?: React.ReactNode
 }
+
+/**
+ * PAGINATION
+ */
+
+interface IPagination {
+    activePage: number,
+    setActivePage: React.Dispatch<React.SetStateAction<number>>
+}
+
+interface IPaginationPage {
+    children?: React.ReactNode,
+}

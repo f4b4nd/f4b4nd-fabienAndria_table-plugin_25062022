@@ -7,17 +7,22 @@ import Searchbar from "./ components/Searchbar"
 import sliceTable from "./helpers/sliceTable"
 import queryTable from "./helpers/queryTable"
 
-import initialData from './fixtures/employees.json'
+import JSONData from './fixtures/employees.json'
 
 import './App.css'
+import Pagination from "./ components/Pagination"
 
 function App () {
+
+    const initialData = JSONData.slice(0, 20)
 
     const [results, setResults] = useState<Ttable>(initialData)
     
     const [maxTableRows, setMaxTableRows] = useState<string>("")
 
     const [inputValue, setInputValue] = useState<string>("")
+
+    const [activePage, setActivePage] = useState<number>(1)
 
     useEffect(() => {
         const slicedResults = sliceTable({data: results, initialData, maxTableRows})
@@ -28,6 +33,7 @@ function App () {
     useEffect(() => {
         const filteredResults = queryTable(initialData, inputValue)
         setResults(filteredResults)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inputValue])
 
     //console.log(Date.now())
@@ -45,6 +51,11 @@ function App () {
             </div>
 
             <Table results={results} setResults={setResults} />
+
+            <Pagination 
+                activePage={activePage} 
+                setActivePage={setActivePage} 
+            />
 
         </div>
         

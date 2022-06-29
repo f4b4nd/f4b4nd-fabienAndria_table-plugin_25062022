@@ -16,13 +16,12 @@ const Table = ({results, setResults}: ITable) => {
     return (
         <Container>
 
-            {results.length > 0 &&
-                <>
+            <HeaderRow.Group>
+                <HeaderRow dataTypes={dataTypes} results={results} setResults={setResults} />
+            </HeaderRow.Group>
 
-                <HeaderRow.Group>
-                    <HeaderRow dataTypes={dataTypes} results={results} setResults={setResults} />
-                </HeaderRow.Group>
-            
+            {results.length > 0 &&
+
                 <DataRow.Group>
                     {results.map((item, idx) => (
                         <DataRow 
@@ -33,7 +32,6 @@ const Table = ({results, setResults}: ITable) => {
                     ))}
                 </DataRow.Group>
                 
-                </>
             }
 
         </Container>
