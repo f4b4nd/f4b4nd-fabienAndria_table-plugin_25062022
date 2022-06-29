@@ -1,11 +1,12 @@
 import { Container, Input, Label } from "./style"
 
 const Searchbar = () => {
+
     return (
         <Container>
             <Label>
                 Search :
-                <Searchbar.Input />
+                <Searchbar.Input/>
             </Label>
         </Container>
     )

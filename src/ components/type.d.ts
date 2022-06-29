@@ -21,14 +21,17 @@ type Ttable = TtableRow[]
  * TABLE
  */
 interface ITable {
-    data: Ttable
+    results: Ttable,
+    setResults: React.Dispatch<React.SetStateAction<Ttable>>
 }
 
 /**
  * HEADER ROW
  */
 interface IHeaderRow {
-    dataTypes: DefaultObject<string>
+    dataTypes: DefaultObject<string>,
+    results: Ttable,
+    setResults: React.Dispatch<React.SetStateAction<Ttable>>
 }
 
 interface IHeaderRowCell {
@@ -40,15 +43,17 @@ interface IHeaderRowSortIcon {
     sortByColumn: string,
     dataType: string,
     activeColumn: string,
-    setActiveColumn: React.Dispatch<React.SetStateAction<string>>
+    setActiveColumn: React.Dispatch<React.SetStateAction<string>>,
+    results: Ttable,
+    setResults: React.Dispatch<React.SetStateAction<Ttable>>
 }
 
 /**
  * DATA ROW
  */
 interface IDataRow {
-    rowData: TtableRow
-    isEven: boolean
+    rowData: TtableRow,
+    isColored: boolean,
 }
 
 interface IDataRowCell {

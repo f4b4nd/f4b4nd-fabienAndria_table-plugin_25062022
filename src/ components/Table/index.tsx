@@ -5,28 +5,29 @@ import HeaderRow from "../HeaderRow"
 import DataRow from "../DataRow"
 import getDataTypes from "../../helpers/dataTypes"
 
-const Table = ({data}: ITable) => {
+const Table = ({results, setResults}: ITable) => {
 
     const dataTypes = useMemo(() => {
-        return getDataTypes(data)
-    }, [data])
+        return getDataTypes(results)
+    }, [results])
+
 
     return (
         <Container>
 
-            {data.length > 0 &&
+            {results.length > 0 &&
                 <>
 
                 <HeaderRow.Group>
-                    <HeaderRow dataTypes={dataTypes} />
+                    <HeaderRow dataTypes={dataTypes} results={results} setResults={setResults} />
                 </HeaderRow.Group>
             
                 <DataRow.Group>
-                    {data.map((item, idx) => (
+                    {results.map((item, idx) => (
                         <DataRow 
                             key={idx} 
                             rowData={item}
-                            isEven={idx % 2 === 0}
+                            isColored={idx % 2 === 0}
                         />
                     ))}
                 </DataRow.Group>

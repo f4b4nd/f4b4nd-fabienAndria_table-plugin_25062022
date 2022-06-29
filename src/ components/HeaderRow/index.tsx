@@ -1,15 +1,13 @@
-import { useState, useCallback } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useState } from "react"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSort, faSortAsc, faSortDesc } from "@fortawesome/free-solid-svg-icons"
 
-import { tableSelector } from "../../store/tableSelector"
-import { sortTableAction } from "../../store/tableActions"
+import sortTable from "../../helpers/sortTable"
 
 import { Container, Cell, Group } from "./style"
 
-const HeaderRow = ({dataTypes}: IHeaderRow) => {
+const HeaderRow = ({dataTypes, results, setResults}: IHeaderRow) => {
 
     const colNames = Object.keys(dataTypes)
 
@@ -22,6 +20,9 @@ const HeaderRow = ({dataTypes}: IHeaderRow) => {
                 <HeaderRow.Cell key={idx} data={colName}>
             
                     <HeaderRow.SortIcon 
+                        results={results}
+                        setResults={setResults}
+
                         sortByColumn={colName}
                         dataType={dataTypes[colName]}
                         activeColumn={activeColumn}
@@ -45,21 +46,14 @@ HeaderRow.Cell = ({data, children}: IHeaderRowCell) => {
     )
 }
 
-HeaderRow.SortIcon = function SortIcon ({sortByColumn, dataType, activeColumn, setActiveColumn}: IHeaderRowSortIcon) {
-
-    const tableStore = useSelector(tableSelector)
-    const dispatch = useDispatch()
-
-    const sortTable = useCallback((table: Ttable, sortByColumn: string, dataType: string, isAscending: boolean) => {
-        dispatch(sortTableAction(table, sortByColumn, dataType, isAscending))
-    }, [dispatch])
+HeaderRow.SortIcon = function SortIcon ({sortByColumn, dataType, activeColumn, setActiveColumn, results, setResults}: IHeaderRowSortIcon) {
 
     const [isAscending, setIsAscending] = useState<boolean>(true)
 
     const handleClick = () => {
         setActiveColumn(sortByColumn)
         setIsAscending(!isAscending)
-        sortTable(tableStore, sortByColumn, dataType, isAscending)
+        sortTable({results, setResults, sortByColumn, dataType, isAscending})
     }
 
     return (

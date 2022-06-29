@@ -2,12 +2,12 @@ import styled from "styled-components"
 import { COLORS } from "../../constants"
 
 interface Props {
-    isEven: boolean
+    isColored: boolean
 }
 
 export const Container = styled.tr<Props>`
 
-    background-color: ${({isEven}) => isEven ? COLORS.lightGrey: 'white'};
+    background-color: ${({isColored}) => isColored ? COLORS.lightGrey: 'white'};
 
     border-bottom: 1px solid ${COLORS.grey};
 

@@ -1,12 +1,12 @@
 import { Container, Cell, Group } from "./style"
 
 
-const DataRow = ({rowData, isEven}: IDataRow) => {
+const DataRow = ({rowData, isColored}: IDataRow) => {
     
     const values = Object.values(rowData)
 
     return (
-        <Container isEven={isEven}>
+        <Container isColored={isColored}>
 
             {values.map((item, idx)=> (
 
@@ -19,7 +19,6 @@ const DataRow = ({rowData, isEven}: IDataRow) => {
         </Container>
     )
 }
-
 
 DataRow.Cell = ({data}: IDataRowCell) => {
     return <Cell>{data}</Cell>

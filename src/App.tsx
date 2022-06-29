@@ -1,31 +1,18 @@
-import { useCallback, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import { useState } from "react"
 
 import Table from './ components/Table'
 import SlicerContainer from "./containers/slicer"
 import Searchbar from "./ components/Searchbar"
 
-import { setInitialDataAction } from "./store/tableActions"
-import { tableSelector } from "./store/tableSelector"
-
-import employeesData from './fixtures/employees.json'
+import initialData from './fixtures/employees.json'
 
 import './App.css'
 
 function App () {
 
-    const tableStore = useSelector(tableSelector)
+    const [results, setResults] = useState<Ttable>(initialData)
 
-    const dispatch = useDispatch()
-
-    const setInitialData = useCallback((table: Ttable) => {
-        dispatch(setInitialDataAction(table))
-    }, [dispatch])
-
-    useEffect(() => {
-        setInitialData(employeesData)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const [inputValue, setInputValue] = useState<string>("")
 
     return (
         <>
@@ -39,7 +26,7 @@ function App () {
 
             </div>
 
-            <Table data={tableStore} />
+            <Table results={results} setResults={setResults}/>
 
         </div>
         </>
