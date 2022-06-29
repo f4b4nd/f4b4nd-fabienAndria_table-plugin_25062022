@@ -9,7 +9,9 @@ const Table = ({results, setResults}: ITable) => {
 
     const dataTypes = useMemo(() => {
         return getDataTypes(results)
-    }, [results])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     
     return (
         <Container>

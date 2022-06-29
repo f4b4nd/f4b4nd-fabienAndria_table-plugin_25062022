@@ -22,6 +22,7 @@ function App () {
     useEffect(() => {
         const slicedResults = sliceTable({data: results, initialData, maxTableRows})
         setResults(slicedResults)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [maxTableRows])
 
     return (
