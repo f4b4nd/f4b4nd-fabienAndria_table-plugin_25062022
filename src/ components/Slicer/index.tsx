@@ -1,9 +1,3 @@
-import { useState, useCallback, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { displaySlicedTableAction } from "../../store/tableActions"
-
-import { tableSelector } from "../../store/tableSelector"
-
 import { Container, Select, Label } from "./style"
 
 
@@ -16,22 +10,7 @@ const Slicer = ({children}: ISlicer) => {
     )
 }
 
-Slicer.Select = function SlicerSelect ({children, ...restProps}: ISlicerSelect) {
-
-    const [maxTableRows, setMaxTableRows] = useState<string>("")
-
-    const tableStore = useSelector(tableSelector)
-    const dispatch = useDispatch()
-
-    const displaySlicedTable = useCallback((table: Ttable, maxTableRows: string) => {
-        dispatch(displaySlicedTableAction(table, maxTableRows))
-    }, [dispatch])
-
-    useEffect(() => {
-        displaySlicedTable(tableStore, maxTableRows)
-        //console.log('newlim', limitTableRows)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [maxTableRows])
+Slicer.Select = function SlicerSelect ({setMaxTableRows, children, ...restProps}: ISlicerSelect) {
 
     return (
         <Select

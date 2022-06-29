@@ -1,6 +1,6 @@
 import Slicer from "../ components/Slicer"
 
-const SlicerContainer: React.FC = () => {
+const SlicerContainer = ({setMaxTableRows}: ISlicerContainer) => {
 
     return (
         <Slicer>
@@ -9,7 +9,7 @@ const SlicerContainer: React.FC = () => {
 
                 Show
 
-                <Slicer.Select defaultValue={"all"} >
+                <Slicer.Select defaultValue={"all"} setMaxTableRows={setMaxTableRows} >
 
                     <Slicer.SelectOption value="10">10</Slicer.SelectOption>
 

@@ -9,6 +9,7 @@ const sortTable = ({results, setResults, sortByColumn, dataType, isAscending}: I
     let sortedTable: Ttable
 
     switch (dataType) {
+
         case 'number':
             sortedTable = [...results].sort((a, b) => {
                 const [item1, item2] = getItemsToCompare(a, b)
@@ -16,6 +17,7 @@ const sortTable = ({results, setResults, sortByColumn, dataType, isAscending}: I
                 return numericComparison(item1 as number, item2 as number, isAscending)
             })
             break
+
         case 'date':
             sortedTable = [...results].sort((a, b) => {
                 const [item1, item2] = getItemsToCompare(a, b)
@@ -23,6 +25,7 @@ const sortTable = ({results, setResults, sortByColumn, dataType, isAscending}: I
                 return dateStringComparison(item1 as string, item2 as string, isAscending)
             })
             break
+
         case 'string':
             sortedTable = [...results].sort((a, b) => {
                 const [item1, item2] = getItemsToCompare(a, b)
@@ -30,9 +33,11 @@ const sortTable = ({results, setResults, sortByColumn, dataType, isAscending}: I
                 return stringComparison(item1 as string, item2 as string, isAscending)
             })
             break
+
         default:
             sortedTable = [...results]
             break
+            
     }
 
     setResults(sortedTable)

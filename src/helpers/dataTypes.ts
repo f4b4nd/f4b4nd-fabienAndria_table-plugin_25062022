@@ -1,5 +1,6 @@
 import { isDate } from "./date"
 
+/** Gets data type for each column, using a sample array of 10 lines */
 const getDataTypes = (data: Ttable) => {
 
     if (data.length <=0) return {}
@@ -12,8 +13,9 @@ const getDataTypes = (data: Ttable) => {
     const colNames: string[] = Object.keys(sampleData[0])
 
     const dataTypes = colNames.reduce((acc, colName) => {
-        const item = {[colName]: getType(sampleData, colName)}
-        return {...acc, ...item}
+        const columnData = sampleData.map(item => item.colName)
+        const datatypeMatch = {[colName]: getDataTypeFromColumn(columnData)}
+        return {...acc, ...datatypeMatch}
     }, {})
 
     return dataTypes
@@ -22,13 +24,12 @@ const getDataTypes = (data: Ttable) => {
 
 export default getDataTypes
 
-const getType = (data: TtableRow[], colName: string): string => {
+
+const getDataTypeFromColumn = (columnData: Tdata[]): string => {
 
     const defaultType = 'string'
 
-    const dataType: string = data.reduce((acc, row) => {
-
-        const item = row[colName]
+    const dataType: string = columnData.reduce((acc: string, item) => {
 
         if (!item) return ""
 
@@ -36,17 +37,16 @@ const getType = (data: TtableRow[], colName: string): string => {
 
         if (isDate(`${item}`)) return 'date'
 
-        const typeMatch = typeof item === 'object' ? null : typeof item 
+        const hasMatched = typeof item !== 'object'
 
-        if (acc === "" && typeMatch) {
-            return typeMatch
+        if (acc === "" && hasMatched) {
+            return typeof item
         }
 
         return acc
     
     }, "")
 
-    return dataType !== "" ? dataType: defaultType
+    return dataType !== "" ? dataType : defaultType
 
 }
-

@@ -10,8 +10,7 @@ const Table = ({results, setResults}: ITable) => {
     const dataTypes = useMemo(() => {
         return getDataTypes(results)
     }, [results])
-
-
+    
     return (
         <Container>
 
