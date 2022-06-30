@@ -109,3 +109,14 @@ interface IPagination {
 interface IPaginationPage {
     children?: React.ReactNode,
 }
+
+interface IPaginationLeftArrow {
+    activePage: number,
+    setActivePage: React.Dispatch<React.SetStateAction<number>>
+}
+
+interface IPaginationRightArrow {
+    activePage: number,
+    setActivePage: React.Dispatch<React.SetStateAction<number>>,
+    maxPagesCount: number,
+}

@@ -36,7 +36,7 @@ function App () {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inputValue])
 
-    //console.log(Date.now())
+    console.log('act', activePage)
 
     return (
         
