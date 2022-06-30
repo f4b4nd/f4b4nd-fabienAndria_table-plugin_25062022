@@ -4,7 +4,6 @@ import Table from './ components/Table'
 import SlicerContainer from "./containers/slicer"
 import Searchbar from "./ components/Searchbar"
 
-import sliceTable from "./helpers/sliceTable"
 import queryTable from "./helpers/queryTable"
 import getRangeDataRowByPage from './helpers/dataPerPage';
 
@@ -25,13 +24,25 @@ function App () {
 
     const [activePage, setActivePage] = useState<number>(1)
 
+    const [rangeOfActivePageResults, setRangeOfActivePageResults] = useState({startRow: 0, endRow: initialData.length})
+
+    const activePageResults = results.slice(rangeOfActivePageResults.startRow, rangeOfActivePageResults.endRow)
+
+    const [pagesCount, setPagesCount] = useState<number>(0)
+
     useEffect(() => {
+
         const [startRow, endRow] = getRangeDataRowByPage(activePage, results.length, rowsPerPage)
-        const pageResults = results.slice(startRow, endRow)
-        const slicedResults = sliceTable({data: pageResults, initialData, rowsPerPage})
-        setResults(slicedResults)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rowsPerPage, activePage])
+
+        setRangeOfActivePageResults({startRow, endRow})
+
+        const hasPages = results.length > 0 && parseInt(rowsPerPage) && parseInt(rowsPerPage) > 0
+
+        const newPagesCount = hasPages ? Math.ceil(results.length / parseInt(rowsPerPage)) : 1
+
+        setPagesCount(newPagesCount)
+
+    }, [activePage, results, rowsPerPage])
     
     useEffect(() => {
         const queryResults = queryTable(initialData, inputValue)
@@ -40,10 +51,8 @@ function App () {
     }, [inputValue])
 
     useEffect(() => {
-
-    })
-
-    console.log('act', activePage)
+        setActivePage(1)
+    }, [rowsPerPage, results])
 
     return (
         
@@ -57,11 +66,12 @@ function App () {
 
             </div>
 
-            <Table results={results} setResults={setResults} />
+            <Table results={activePageResults} setResults={setResults} />
 
             <Pagination 
                 activePage={activePage} 
-                setActivePage={setActivePage} 
+                setActivePage={setActivePage}
+                pagesCount={pagesCount}
             />
 
         </div>

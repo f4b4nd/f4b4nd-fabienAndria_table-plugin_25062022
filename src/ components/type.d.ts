@@ -103,7 +103,8 @@ interface ISearchbarLabel {
 
 interface IPagination {
     activePage: number,
-    setActivePage: React.Dispatch<React.SetStateAction<number>>
+    setActivePage: React.Dispatch<React.SetStateAction<number>>,
+    pagesCount: number,
 }
 
 interface IPaginationPage {

@@ -1,26 +1,26 @@
 import { Container, Inner, Page, PageItems, LeftArrow, RightArrow } from "./style"
 
-const Pagination = ({activePage, setActivePage}: IPagination) => {
+const Pagination = ({activePage, setActivePage, pagesCount}: IPagination) => {
 
-    const pagesCount = Array.from(Array(5).keys()).map((_, idx) => idx+1)
+    const pages = Array.from(Array(pagesCount).keys()).map((_, idx) => idx+1)
 
     const handleClickOnPage = (e: React.MouseEvent<HTMLElement>) => {
-        const newPageStr: string = (e.target as any).textContent
-        const newPage = parseInt(newPageStr)
-        if (newPage && newPage !== activePage) {
-            setActivePage(newPage)
+        const newActivePageStr: string = (e.target as any).textContent
+        const newActivePage = parseInt(newActivePageStr)
+        if (newActivePage && newActivePage !== activePage) {
+            setActivePage(newActivePage)
         }
     }
 
     const handleClickLeftArrow = (activePage: number) => {
         if (activePage > 1) {
-            setActivePage(activePage-1)
+            setActivePage(activePage - 1)
         }
     }
 
-    const handleClickRightArrow = (activePage: number, maxPagesCount: number) => {
-        if (activePage < maxPagesCount) {
-            setActivePage(activePage+1)
+    const handleClickRightArrow = (activePage: number, pagesCount: number) => {
+        if (activePage < pagesCount) {
+            setActivePage(activePage + 1)
         }
     }
 
@@ -34,9 +34,9 @@ const Pagination = ({activePage, setActivePage}: IPagination) => {
                 </LeftArrow>
 
                     <PageItems>
-                        {pagesCount.map((page, idx) => (
+                        {pages.map((page) => (
                             <Page
-                                key={idx}
+                                key={page}
                                 isActive={page === activePage}
                                 onClick={handleClickOnPage}
                             >
@@ -45,7 +45,7 @@ const Pagination = ({activePage, setActivePage}: IPagination) => {
                         ))}
                     </PageItems>
                 
-                <RightArrow onClick={() => handleClickRightArrow(activePage, pagesCount.length)} > 
+                <RightArrow onClick={() => handleClickRightArrow(activePage, pagesCount)} > 
                     {">>"}
                 </RightArrow>
 

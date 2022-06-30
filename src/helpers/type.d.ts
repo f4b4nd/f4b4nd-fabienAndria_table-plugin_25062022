@@ -11,16 +11,6 @@ interface IsortTable {
 }
 
 /**
- * SLICE TABLE
- */
-
-interface IsliceTable {
-    data: Ttable, 
-    initialData: Ttable, 
-    rowsPerPage: string
-}
-
-/**
  * QUERY TABLE
  */
 

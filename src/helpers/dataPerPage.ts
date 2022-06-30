@@ -17,7 +17,7 @@ const getRangeDataRowByPage = (page: number, tableLength: number, rowsPerPageStr
         return [startRow, endRow]
     }
 
-    startRow = (page -1) * rowsPerPage + 1
+    startRow = (page -1) * rowsPerPage
 
     endRow = page * rowsPerPage
 
