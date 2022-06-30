@@ -69,7 +69,7 @@ interface ISlicer {
 }
 
 interface ISlicerSelect extends RestProps {
-    setRowsPerPage: React.Dispatch<React.SetStateAction<string>>
+    setRowsPerPage: React.Dispatch<React.SetStateAction<number>>
     children?: React.ReactNode
 }
 
@@ -86,12 +86,10 @@ interface ISlicerLabel {
  */
 
 interface ISearchbar {
-    setInputValue: React.Dispatch<React.SetStateAction<string>>
+    initialData: Ttable,
+    setResults: React.Dispatch<React.SetStateAction<Ttable>>
 }
 
- interface ISearchbarInput {
-    setInputValue: React.Dispatch<React.SetStateAction<string>>
-}
 
 interface ISearchbarLabel {
     children?: React.ReactNode
@@ -109,15 +107,4 @@ interface IPagination {
 
 interface IPaginationPage {
     children?: React.ReactNode,
-}
-
-interface IPaginationLeftArrow {
-    activePage: number,
-    setActivePage: React.Dispatch<React.SetStateAction<number>>
-}
-
-interface IPaginationRightArrow {
-    activePage: number,
-    setActivePage: React.Dispatch<React.SetStateAction<number>>,
-    maxPagesCount: number,
 }

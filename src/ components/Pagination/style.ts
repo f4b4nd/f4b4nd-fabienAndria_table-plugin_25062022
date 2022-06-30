@@ -1,8 +1,12 @@
 import styled from "styled-components"
 import { COLORS } from '../../constants/colors';
 
-interface Props {
+interface IPage {
     isActive: boolean,
+}
+
+interface IArrow {
+    isVisible: boolean,
 }
 
 export const Container = styled.div`
@@ -17,7 +21,7 @@ export const Inner = styled.div`
     column-gap: 0.5em;
 `
 
-export const Page = styled.div<Props>`
+export const Page = styled.div<IPage>`
     font-size: 1em;
     padding: 0.5em;
     border-radius: 2px;
@@ -37,12 +41,15 @@ export const PageItems = styled.div`
     column-gap: 0.5em;
 `
 
-export const LeftArrow = styled.div`
+export const LeftArrow= styled.div<IArrow>`
     font-weight: bold;
     cursor: pointer;
+
+    ${({isVisible}) => !isVisible && 'visibility: hidden;'}
 `
 
-export const RightArrow = styled.div`
+export const RightArrow = styled.div<IArrow>`
     font-weight: bold;
     cursor: pointer;
+    ${({isVisible}) => !isVisible && 'visibility: hidden;'}
 `

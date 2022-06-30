@@ -9,17 +9,17 @@ const SlicerContainer = ({setRowsPerPage}: ISlicerContainer) => {
 
                 Show
 
-                <Slicer.Select defaultValue={"all"} setRowsPerPage={setRowsPerPage} >
+                <Slicer.Select defaultValue={NaN} setRowsPerPage={setRowsPerPage} >
 
-                    <Slicer.SelectOption value="10">10</Slicer.SelectOption>
+                    <Slicer.SelectOption value={10}>10</Slicer.SelectOption>
 
-                    <Slicer.SelectOption value="25">25</Slicer.SelectOption>
+                    <Slicer.SelectOption value={25}>25</Slicer.SelectOption>
 
-                    <Slicer.SelectOption value="50">50</Slicer.SelectOption>
+                    <Slicer.SelectOption value={50}>50</Slicer.SelectOption>
 
-                    <Slicer.SelectOption value="100">100</Slicer.SelectOption>
+                    <Slicer.SelectOption value={100}>100</Slicer.SelectOption>
 
-                    <Slicer.SelectOption value="all">All</Slicer.SelectOption>
+                    <Slicer.SelectOption value={NaN}>All</Slicer.SelectOption>
 
                 </Slicer.Select>
 

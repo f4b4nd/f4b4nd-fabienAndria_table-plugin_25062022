@@ -29,9 +29,13 @@ const Pagination = ({activePage, setActivePage, pagesCount}: IPagination) => {
 
             <Inner >
 
-                <LeftArrow onClick={() => handleClickLeftArrow(activePage)} >
+                <LeftArrow  
+                    isVisible={activePage > 1}
+                    onClick={() => handleClickLeftArrow(activePage)} 
+                >
                     {"<<"}
                 </LeftArrow>
+                
 
                     <PageItems>
                         {pages.map((page) => (
@@ -45,10 +49,13 @@ const Pagination = ({activePage, setActivePage, pagesCount}: IPagination) => {
                         ))}
                     </PageItems>
                 
-                <RightArrow onClick={() => handleClickRightArrow(activePage, pagesCount)} > 
+                <RightArrow 
+                    isVisible={activePage < pagesCount}
+                    onClick={() => handleClickRightArrow(activePage, pagesCount)} 
+                > 
                     {">>"}
                 </RightArrow>
-
+                
             </Inner>
 
         </Container>

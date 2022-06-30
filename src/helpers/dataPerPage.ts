@@ -1,9 +1,7 @@
-const getRangeDataRowByPage = (page: number, tableLength: number, rowsPerPageString: string) => {
+const getRangeDataRowByPage = (page: number, tableLength: number, rowsPerPage: number) => {
     
     let startRow: number
     let endRow : number
-
-    const rowsPerPage = parseInt(rowsPerPageString)
 
     if (!rowsPerPage) {
         startRow = 0

@@ -17,7 +17,11 @@ const Table = ({results, setResults}: ITable) => {
         <Container>
 
             <HeaderRow.Group>
-                <HeaderRow dataTypes={dataTypes} results={results} setResults={setResults} />
+                <HeaderRow
+                    dataTypes={dataTypes} 
+                    results={results} 
+                    setResults={setResults} 
+                />
             </HeaderRow.Group>
 
             {results.length > 0 &&

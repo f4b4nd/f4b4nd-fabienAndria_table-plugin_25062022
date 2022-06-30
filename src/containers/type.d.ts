@@ -2,5 +2,5 @@
  * SLICER
  */
 interface ISlicerContainer {
-    setRowsPerPage: React.Dispatch<React.SetStateAction<string>>
+    setRowsPerPage: React.Dispatch<React.SetStateAction<number>>
 }

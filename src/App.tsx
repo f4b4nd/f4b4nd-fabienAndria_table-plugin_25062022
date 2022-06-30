@@ -18,9 +18,7 @@ function App () {
 
     const [results, setResults] = useState<Ttable>(initialData)
     
-    const [rowsPerPage, setRowsPerPage] = useState<string>("")
-
-    const [inputValue, setInputValue] = useState<string>("")
+    const [rowsPerPage, setRowsPerPage] = useState<number>(NaN)
 
     const [activePage, setActivePage] = useState<number>(1)
 
@@ -36,24 +34,14 @@ function App () {
 
         setRangeOfActivePageResults({startRow, endRow})
 
-        const hasPages = results.length > 0 && parseInt(rowsPerPage) && parseInt(rowsPerPage) > 0
+        const hasPages = results.length > 0 && rowsPerPage > 0
 
-        const newPagesCount = hasPages ? Math.ceil(results.length / parseInt(rowsPerPage)) : 1
+        const newPagesCount = hasPages ? Math.ceil(results.length / rowsPerPage) : 1
 
         setPagesCount(newPagesCount)
 
     }, [activePage, results, rowsPerPage])
     
-    useEffect(() => {
-        const queryResults = queryTable(initialData, inputValue)
-        setResults(queryResults)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [inputValue])
-
-    useEffect(() => {
-        setActivePage(1)
-    }, [rowsPerPage, results])
-
     return (
         
         <div className="table-container">
@@ -62,7 +50,7 @@ function App () {
 
                 <SlicerContainer setRowsPerPage={setRowsPerPage} />
 
-                <Searchbar setInputValue={setInputValue}/>
+                <Searchbar initialData={initialData} setResults={setResults}  />
 
             </div>
 
