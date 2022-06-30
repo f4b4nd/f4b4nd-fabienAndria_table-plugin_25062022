@@ -1,19 +1,19 @@
-const sliceTable = ({data, initialData, maxTableRows}: IsliceTable): Ttable => {
+const sliceTable = ({data, initialData, rowsPerPage}: IsliceTable): Ttable => {
 
-    const maxRows = parseInt(maxTableRows) || null
+    const rowsPerPageInt = parseInt(rowsPerPage) || null
 
     let slicedData: Ttable
 
-    if (!maxRows) {
+    if (!rowsPerPageInt) {
         slicedData = initialData
     }
 
-    else if (maxRows >= data.length) {
-        slicedData = initialData.slice(0, maxRows) 
+    else if (rowsPerPageInt >= data.length) {
+        slicedData = initialData.slice(0, rowsPerPageInt) 
     }
 
     else {
-        slicedData = data.slice(0, maxRows)
+        slicedData = data.slice(0, rowsPerPageInt)
     }
     
     return slicedData

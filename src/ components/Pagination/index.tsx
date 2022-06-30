@@ -2,8 +2,6 @@ import { Container, Inner, Page, PageItems, LeftArrow, RightArrow } from "./styl
 
 const Pagination = ({activePage, setActivePage}: IPagination) => {
 
-    const maxPagesDisplayed = 10
-
     const pagesCount = Array.from(Array(5).keys()).map((_, idx) => idx+1)
 
     const handleClickOnPage = (e: React.MouseEvent<HTMLElement>) => {

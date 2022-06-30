@@ -6,6 +6,7 @@ import Searchbar from "./ components/Searchbar"
 
 import sliceTable from "./helpers/sliceTable"
 import queryTable from "./helpers/queryTable"
+import getRangeDataRowByPage from './helpers/dataPerPage';
 
 import JSONData from './fixtures/employees.json'
 
@@ -14,27 +15,33 @@ import Pagination from "./ components/Pagination"
 
 function App () {
 
-    const initialData = JSONData.slice(0, 20)
+    const initialData = JSONData.slice(0, 150)
 
     const [results, setResults] = useState<Ttable>(initialData)
     
-    const [maxTableRows, setMaxTableRows] = useState<string>("")
+    const [rowsPerPage, setRowsPerPage] = useState<string>("")
 
     const [inputValue, setInputValue] = useState<string>("")
 
     const [activePage, setActivePage] = useState<number>(1)
 
     useEffect(() => {
-        const slicedResults = sliceTable({data: results, initialData, maxTableRows})
+        const [startRow, endRow] = getRangeDataRowByPage(activePage, results.length, rowsPerPage)
+        const pageResults = results.slice(startRow, endRow)
+        const slicedResults = sliceTable({data: pageResults, initialData, rowsPerPage})
         setResults(slicedResults)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [maxTableRows])
+    }, [rowsPerPage, activePage])
     
     useEffect(() => {
-        const filteredResults = queryTable(initialData, inputValue)
-        setResults(filteredResults)
+        const queryResults = queryTable(initialData, inputValue)
+        setResults(queryResults)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inputValue])
+
+    useEffect(() => {
+
+    })
 
     console.log('act', activePage)
 
@@ -44,7 +51,7 @@ function App () {
 
             <div className="row">
 
-                <SlicerContainer setMaxTableRows={setMaxTableRows} />
+                <SlicerContainer setRowsPerPage={setRowsPerPage} />
 
                 <Searchbar setInputValue={setInputValue}/>
 

@@ -69,7 +69,7 @@ interface ISlicer {
 }
 
 interface ISlicerSelect extends RestProps {
-    setMaxTableRows: React.Dispatch<React.SetStateAction<string>>
+    setRowsPerPage: React.Dispatch<React.SetStateAction<string>>
     children?: React.ReactNode
 }
 

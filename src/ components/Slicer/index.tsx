@@ -10,13 +10,13 @@ const Slicer = ({children}: ISlicer) => {
     )
 }
 
-Slicer.Select = function SlicerSelect ({setMaxTableRows, children, ...restProps}: ISlicerSelect) {
+Slicer.Select = function SlicerSelect ({setRowsPerPage, children, ...restProps}: ISlicerSelect) {
 
     return (
         <Select
             {...restProps}
             onChange={(e) => {
-                setMaxTableRows(e.target.value)
+                setRowsPerPage(e.target.value)
             }}
         >
             {children}

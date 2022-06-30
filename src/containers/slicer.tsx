@@ -1,6 +1,6 @@
 import Slicer from "../ components/Slicer"
 
-const SlicerContainer = ({setMaxTableRows}: ISlicerContainer) => {
+const SlicerContainer = ({setRowsPerPage}: ISlicerContainer) => {
 
     return (
         <Slicer>
@@ -9,7 +9,7 @@ const SlicerContainer = ({setMaxTableRows}: ISlicerContainer) => {
 
                 Show
 
-                <Slicer.Select defaultValue={"all"} setMaxTableRows={setMaxTableRows} >
+                <Slicer.Select defaultValue={"all"} setRowsPerPage={setRowsPerPage} >
 
                     <Slicer.SelectOption value="10">10</Slicer.SelectOption>
 

@@ -17,7 +17,7 @@ interface IsortTable {
 interface IsliceTable {
     data: Ttable, 
     initialData: Ttable, 
-    maxTableRows: string
+    rowsPerPage: string
 }
 
 /**
