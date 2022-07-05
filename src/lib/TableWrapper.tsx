@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react"
 
+import getRangeDataRowByPage from './helpers/dataPerPage'
+
 import Table from './ components/Table'
 import SlicerContainer from "./containers/slicer"
 import Searchbar from "./ components/Searchbar"
+import Pagination from "./ components/Pagination"
 
-import getRangeDataRowByPage from './helpers/dataPerPage';
 
 import JSONData from './fixtures/employees.json'
 
-import './App.css'
-import Pagination from "./ components/Pagination"
+//import './App.css'
 
-function App () {
+export function TableWrapper () {
 
     const initialData = JSONData.slice(0, 150)
 
@@ -74,5 +75,3 @@ function App () {
         
     )
 }
-
-export default App

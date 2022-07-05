@@ -1,7 +1,7 @@
 import { useState } from "react"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSort, faSortAsc, faSortDesc } from "@fortawesome/free-solid-svg-icons"
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { faSort, faSortAsc, faSortDesc } from "@fortawesome/free-solid-svg-icons"
 
 import sortTable from "../../helpers/sortTable"
 
@@ -59,12 +59,6 @@ HeaderRow.SortIcon = function SortIcon ({sortByColumn, dataType, activeColumn, s
     return (
         <span className="sort-icon" onClick={handleClick}>
 
-            {(activeColumn !== sortByColumn || activeColumn === "") && <FontAwesomeIcon icon={faSort} />}
-
-            {activeColumn === sortByColumn && !isAscending && <FontAwesomeIcon icon={faSortAsc} />}
-
-            {activeColumn === sortByColumn && isAscending && <FontAwesomeIcon icon={faSortDesc} />}
-
         </span>
     )
 }
@@ -74,3 +68,12 @@ HeaderRow.Group = ({children}: IChildren) => {
 }
 
 export default HeaderRow
+/*
+
+            {(activeColumn !== sortByColumn || activeColumn === "") && <FontAwesomeIcon icon={faSort} />}
+
+            {activeColumn === sortByColumn && !isAscending && <FontAwesomeIcon icon={faSortAsc} />}
+
+            {activeColumn === sortByColumn && isAscending && <FontAwesomeIcon icon={faSortDesc} />}
+
+*/
