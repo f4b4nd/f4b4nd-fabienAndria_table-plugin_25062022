@@ -4,7 +4,6 @@ import Table from './ components/Table'
 import SlicerContainer from "./containers/slicer"
 import Searchbar from "./ components/Searchbar"
 
-import queryTable from "./helpers/queryTable"
 import getRangeDataRowByPage from './helpers/dataPerPage';
 
 import JSONData from './fixtures/employees.json'
@@ -22,11 +21,12 @@ function App () {
 
     const [activePage, setActivePage] = useState<number>(1)
 
+    const [pagesCount, setPagesCount] = useState<number>(0)
+
     const [rangeOfActivePageResults, setRangeOfActivePageResults] = useState({startRow: 0, endRow: initialData.length})
 
     const activePageResults = results.slice(rangeOfActivePageResults.startRow, rangeOfActivePageResults.endRow)
 
-    const [pagesCount, setPagesCount] = useState<number>(0)
 
     useEffect(() => {
 
@@ -48,13 +48,21 @@ function App () {
 
             <div className="row">
 
-                <SlicerContainer setRowsPerPage={setRowsPerPage} />
+                <SlicerContainer 
+                    setRowsPerPage={setRowsPerPage} 
+                />
 
-                <Searchbar initialData={initialData} setResults={setResults}  />
+                <Searchbar 
+                    initialData={initialData} 
+                    setResults={setResults}  
+                />
 
             </div>
 
-            <Table results={activePageResults} setResults={setResults} />
+            <Table 
+                results={activePageResults} 
+                setResults={setResults} 
+            />
 
             <Pagination 
                 activePage={activePage} 

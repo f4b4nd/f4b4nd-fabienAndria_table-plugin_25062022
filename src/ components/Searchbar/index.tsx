@@ -1,5 +1,5 @@
 import { Container, Input, Label } from "./style"
-import queryTable from '../../helpers/queryTable';
+import queryTable from '../../helpers/queryTable'
 
 const Searchbar = ({initialData, setResults}: ISearchbar) => {
 
