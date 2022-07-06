@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { TableWrapper } from './lib'
+import Example from './example'
 
 import './index.css'
 
@@ -11,6 +11,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
     <React.StrictMode>
-        <TableWrapper />
+        <Example />
     </React.StrictMode>
 )

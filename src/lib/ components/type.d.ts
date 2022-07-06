@@ -16,6 +16,12 @@ type TtableRow = DefaultObject<Tdata>
 
 type Ttable = TtableRow[]
 
+/**
+ * TABLE WRAPPER
+ */
+ interface ITableWrapper {
+    initialData: Ttable,
+}
 
 /**
  * TABLE

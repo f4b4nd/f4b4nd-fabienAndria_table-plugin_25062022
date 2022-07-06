@@ -6,15 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TableWrapper = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
-const dataPerPage_1 = __importDefault(require("./helpers/dataPerPage"));
-const Table_1 = __importDefault(require("./ components/Table"));
-const slicer_1 = __importDefault(require("./containers/slicer"));
-const Searchbar_1 = __importDefault(require("./ components/Searchbar"));
-const Pagination_1 = __importDefault(require("./ components/Pagination"));
-const employees_json_1 = __importDefault(require("./fixtures/employees.json"));
-//import './App.css'
-function TableWrapper() {
-    const initialData = employees_json_1.default.slice(0, 150);
+const style_1 = require("./style");
+const dataPerPage_1 = __importDefault(require("../../helpers/dataPerPage"));
+const Table_1 = __importDefault(require("../Table"));
+const slicer_1 = __importDefault(require("../../containers/slicer"));
+const Searchbar_1 = __importDefault(require("../Searchbar"));
+const Pagination_1 = __importDefault(require("../Pagination"));
+//import JSONData from '../../fixtures/employees.json'
+//const initialData = JSONData.slice(0, 150)
+function TableWrapper({ initialData }) {
     const [results, setResults] = (0, react_1.useState)(initialData);
     const [rowsPerPage, setRowsPerPage] = (0, react_1.useState)(NaN);
     const [activePage, setActivePage] = (0, react_1.useState)(1);
@@ -28,6 +28,6 @@ function TableWrapper() {
         const newPagesCount = hasPages ? Math.ceil(results.length / rowsPerPage) : 1;
         setPagesCount(newPagesCount);
     }, [activePage, results, rowsPerPage]);
-    return ((0, jsx_runtime_1.jsxs)("div", { className: "table-container", children: [(0, jsx_runtime_1.jsxs)("div", { className: "row", children: [(0, jsx_runtime_1.jsx)(slicer_1.default, { setRowsPerPage: setRowsPerPage }), (0, jsx_runtime_1.jsx)(Searchbar_1.default, { initialData: initialData, setResults: setResults })] }), (0, jsx_runtime_1.jsx)(Table_1.default, { results: activePageResults, setResults: setResults }), (0, jsx_runtime_1.jsx)(Pagination_1.default, { activePage: activePage, setActivePage: setActivePage, pagesCount: pagesCount })] }));
+    return ((0, jsx_runtime_1.jsxs)(style_1.Container, { className: "table-container", children: [(0, jsx_runtime_1.jsxs)(style_1.Row, { className: "row", children: [(0, jsx_runtime_1.jsx)(slicer_1.default, { setRowsPerPage: setRowsPerPage }), (0, jsx_runtime_1.jsx)(Searchbar_1.default, { initialData: initialData, setResults: setResults })] }), (0, jsx_runtime_1.jsx)(Table_1.default, { results: activePageResults, setResults: setResults }), (0, jsx_runtime_1.jsx)(Pagination_1.default, { activePage: activePage, setActivePage: setActivePage, pagesCount: pagesCount })] }));
 }
 exports.TableWrapper = TableWrapper;

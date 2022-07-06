@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react"
 
-import getRangeDataRowByPage from './helpers/dataPerPage'
+import { Container, Row } from "./style"
 
-import Table from './ components/Table'
-import SlicerContainer from "./containers/slicer"
-import Searchbar from "./ components/Searchbar"
-import Pagination from "./ components/Pagination"
+import getRangeDataRowByPage from '../../helpers/dataPerPage'
+
+import Table from '../Table'
+import SlicerContainer from "../../containers/slicer"
+import Searchbar from "../Searchbar"
+import Pagination from "../Pagination"
 
 
-import JSONData from './fixtures/employees.json'
+//import JSONData from '../../fixtures/employees.json'
+//const initialData = JSONData.slice(0, 150)
 
-//import './App.css'
 
-export function TableWrapper () {
-
-    const initialData = JSONData.slice(0, 150)
+export function TableWrapper ({initialData}: ITableWrapper) {
 
     const [results, setResults] = useState<Ttable>(initialData)
     
@@ -45,9 +45,9 @@ export function TableWrapper () {
     
     return (
         
-        <div className="table-container">
+        <Container className="table-container">
 
-            <div className="row">
+            <Row className="row">
 
                 <SlicerContainer 
                     setRowsPerPage={setRowsPerPage} 
@@ -58,7 +58,7 @@ export function TableWrapper () {
                     setResults={setResults}  
                 />
 
-            </div>
+            </Row>
 
             <Table 
                 results={activePageResults} 
@@ -71,7 +71,7 @@ export function TableWrapper () {
                 pagesCount={pagesCount}
             />
 
-        </div>
+        </Container>
         
     )
 }

@@ -1,11 +1,13 @@
 import { useState } from "react"
 
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { faSort, faSortAsc, faSortDesc } from "@fortawesome/free-solid-svg-icons"
+import SortIconPNG from "../../assets/sort.png"
+import AscendingSortIconPNG from "../../assets/sort-asc.png"
+import DescendingSortIconPNG from "../../assets/sort-desc.png"
 
 import sortTable from "../../helpers/sortTable"
 
-import { Container, Cell, Group } from "./style"
+import { Container, Cell, Group, Icon } from "./style"
+
 
 const HeaderRow = ({dataTypes, results, setResults}: IHeaderRow) => {
 
@@ -18,7 +20,7 @@ const HeaderRow = ({dataTypes, results, setResults}: IHeaderRow) => {
             {colNames.map((colName, idx)=> (
 
                 <HeaderRow.Cell key={idx} data={colName}>
-            
+                    
                     <HeaderRow.SortIcon 
                         results={results}
                         setResults={setResults}
@@ -28,7 +30,6 @@ const HeaderRow = ({dataTypes, results, setResults}: IHeaderRow) => {
                         activeColumn={activeColumn}
                         setActiveColumn={setActiveColumn}
                     />
-
                 </HeaderRow.Cell>
 
             ))}
@@ -58,6 +59,12 @@ HeaderRow.SortIcon = function SortIcon ({sortByColumn, dataType, activeColumn, s
 
     return (
         <span className="sort-icon" onClick={handleClick}>
+        
+            {(activeColumn !== sortByColumn || activeColumn === "") && <Icon src={SortIconPNG} alt="sort" className="sort" /> }
+
+            {activeColumn === sortByColumn && !isAscending && <Icon src={DescendingSortIconPNG} alt="descending-sort" className="descending-sort" /> }
+
+            {activeColumn === sortByColumn && isAscending && <Icon src={AscendingSortIconPNG} alt="ascending-sort" className="ascending-sort" /> }
 
         </span>
     )
@@ -68,12 +75,4 @@ HeaderRow.Group = ({children}: IChildren) => {
 }
 
 export default HeaderRow
-/*
 
-            {(activeColumn !== sortByColumn || activeColumn === "") && <FontAwesomeIcon icon={faSort} />}
-
-            {activeColumn === sortByColumn && !isAscending && <FontAwesomeIcon icon={faSortAsc} />}
-
-            {activeColumn === sortByColumn && isAscending && <FontAwesomeIcon icon={faSortDesc} />}
-
-*/
