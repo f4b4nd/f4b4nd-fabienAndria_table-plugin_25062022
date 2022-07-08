@@ -10,10 +10,6 @@ import Searchbar from "../Searchbar"
 import Pagination from "../Pagination"
 
 
-//import JSONData from '../../fixtures/employees.json'
-//const initialData = JSONData.slice(0, 150)
-
-
 export function TableWrapper ({initialData}: ITableWrapper) {
 
     const [results, setResults] = useState<Ttable>(initialData)

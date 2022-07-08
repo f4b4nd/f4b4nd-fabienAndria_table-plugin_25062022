@@ -1,5 +1,6 @@
 import { useMemo } from "react"
 import getDataTypes from "../../helpers/dataTypes"
+import objectIsEmpty from "../../helpers/objectIsEmpty"
 
 import { Container } from "./style"
 
@@ -28,6 +29,7 @@ const Table = ({results, setResults}: ITable) => {
 
                 <DataRow.Group>
                     {results.map((item, idx) => (
+                        !objectIsEmpty(item) &&
                         <DataRow 
                             key={idx} 
                             rowData={item}

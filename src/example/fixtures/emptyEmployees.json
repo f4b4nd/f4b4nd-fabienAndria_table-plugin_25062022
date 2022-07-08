@@ -1,0 +1,14 @@
+[
+    {
+        "id": "",
+        "firstName": "",
+        "lastName":"",
+        "startDate":"",
+        "department":"",
+        "dateOfBirth":"",
+        "street":"",
+        "city":"",
+        "state": null,
+        "zipCode":""
+    }
+]
