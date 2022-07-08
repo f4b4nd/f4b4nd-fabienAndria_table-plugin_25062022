@@ -33,13 +33,11 @@ export function TableWrapper ({initialData}: ITableWrapper) {
 
         setRangeOfActivePageResults({startRow, endRow})
 
-        const hasPages = results.length > 0 && rowsPerPage !== "all"
+        const hasMultiplePages = results.length > 0 && rowsPerPage !== "all"
 
-        const newPagesCount = hasPages ? Math.ceil(results.length / rowsPerPage) : 1
+        const newPagesCount = hasMultiplePages ? Math.ceil(results.length / rowsPerPage) : 1
 
         setPagesCount(newPagesCount)
-
-        console.log('activepage', activePage, 'length', results.length, 'perpage', rowsPerPage)
 
     }, [activePage, results, rowsPerPage])
     

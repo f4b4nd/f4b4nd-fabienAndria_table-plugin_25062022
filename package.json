@@ -1,6 +1,6 @@
 {
   "name": "f4b4nd-table-plugin",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": false,
   "main": "dist/index.js",
   "files": [
