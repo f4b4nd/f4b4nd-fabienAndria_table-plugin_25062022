@@ -11,14 +11,14 @@ interface IArrow {
 
 export const Container = styled.div`
     margin: 1em 0;
-    display: flex;
-    justify-content: flex-end;
 `
 
 export const Inner = styled.div`
     display: flex;
     align-items: center;
     column-gap: 0.5em;
+    padding: 0;
+    margin: 0;
 `
 
 export const Page = styled.div<IPage>`

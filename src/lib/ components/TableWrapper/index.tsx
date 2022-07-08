@@ -8,6 +8,7 @@ import Table from '../Table'
 import SlicerContainer from "../../containers/slicer"
 import Searchbar from "../Searchbar"
 import Pagination from "../Pagination"
+import RowCounter from "../RowCounter"
 
 
 export function TableWrapper ({initialData}: ITableWrapper) {
@@ -61,12 +62,21 @@ export function TableWrapper ({initialData}: ITableWrapper) {
                 setResults={setResults} 
             />
 
-            <Pagination 
-                activePage={activePage} 
-                setActivePage={setActivePage}
-                pagesCount={pagesCount}
-            />
+            <Row className="row">
 
+                <RowCounter
+                    startRow={results.length > 0 ? 1 +rangeOfActivePageResults.startRow : 0}
+                    endRow={rangeOfActivePageResults.endRow}
+                    maxEntries={results.length}
+                />
+
+                <Pagination 
+                    activePage={activePage} 
+                    setActivePage={setActivePage}
+                    pagesCount={pagesCount}
+                />
+            </Row>
+            
         </Container>
         
     )

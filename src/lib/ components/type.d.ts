@@ -114,3 +114,13 @@ interface IPagination {
 interface IPaginationPage {
     children?: React.ReactNode,
 }
+
+/**
+ * ROW COUNTER
+*/
+
+interface IRowCounter {
+    startRow: number,
+    endRow: number,
+    maxEntries: number,
+}

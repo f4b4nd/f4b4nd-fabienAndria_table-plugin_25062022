@@ -8,4 +8,5 @@ export const Container = styled.div`
 export const Row = styled.div`
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 `
