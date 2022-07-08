@@ -7,8 +7,9 @@ const Slicer = ({ children }) => {
 };
 Slicer.Select = function SlicerSelect({ setRowsPerPage, children, ...restProps }) {
     return ((0, jsx_runtime_1.jsx)(style_1.Select, { ...restProps, onChange: (e) => {
-            const newRowsPerPage = parseInt(e.target.value);
-            setRowsPerPage(newRowsPerPage);
+            const value = e.target.value;
+            const rowsPerPage = value === "all" ? "all" : parseInt(value);
+            setRowsPerPage(rowsPerPage);
         }, children: children }));
 };
 Slicer.SelectOption = ({ children, ...restProps }) => {

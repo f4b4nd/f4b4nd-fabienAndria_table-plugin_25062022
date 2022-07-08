@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const getRangeDataRowByPage = (page, tableLength, rowsPerPage) => {
     let startRow;
     let endRow;
-    if (!rowsPerPage) {
+    if (rowsPerPage === "all") {
         startRow = 0;
         endRow = tableLength;
         return [startRow, endRow];
