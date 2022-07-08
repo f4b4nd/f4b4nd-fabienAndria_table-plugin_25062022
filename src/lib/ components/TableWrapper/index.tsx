@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { Container, Row } from "./style"
 
 import getRangeDataRowByPage from '../../helpers/dataPerPage'
+import { tableIsEmpty } from "../../helpers/isEmptyData"
 
 import Table from '../Table'
 import SlicerContainer from "../../containers/slicer"
@@ -15,7 +16,7 @@ export function TableWrapper ({initialData}: ITableWrapper) {
 
     const [results, setResults] = useState<Ttable>(initialData)
     
-    const [rowsPerPage, setRowsPerPage] = useState<number>(NaN)
+    const [rowsPerPage, setRowsPerPage] = useState<number | "all">("all")
 
     const [activePage, setActivePage] = useState<number>(1)
 
@@ -32,14 +33,22 @@ export function TableWrapper ({initialData}: ITableWrapper) {
 
         setRangeOfActivePageResults({startRow, endRow})
 
-        const hasPages = results.length > 0 && rowsPerPage > 0
+        const hasPages = results.length > 0 && rowsPerPage !== "all"
 
         const newPagesCount = hasPages ? Math.ceil(results.length / rowsPerPage) : 1
 
         setPagesCount(newPagesCount)
 
+        console.log('activepage', activePage, 'length', results.length, 'perpage', rowsPerPage)
+
     }, [activePage, results, rowsPerPage])
     
+
+    useEffect(() => {
+        setActivePage(1)
+    }, [results, rowsPerPage])
+  
+
     return (
         
         <Container className="table-container">
@@ -65,9 +74,10 @@ export function TableWrapper ({initialData}: ITableWrapper) {
             <Row className="row">
 
                 <RowCounter
-                    startRow={results.length > 0 ? 1 +rangeOfActivePageResults.startRow : 0}
+                    startRow={1 +rangeOfActivePageResults.startRow}
                     endRow={rangeOfActivePageResults.endRow}
                     maxEntries={results.length}
+                    tableIsEmpty={tableIsEmpty(results)}
                 />
 
                 <Pagination 
@@ -76,7 +86,7 @@ export function TableWrapper ({initialData}: ITableWrapper) {
                     pagesCount={pagesCount}
                 />
             </Row>
-            
+
         </Container>
         
     )

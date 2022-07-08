@@ -16,8 +16,9 @@ Slicer.Select = function SlicerSelect ({setRowsPerPage, children, ...restProps}:
         <Select
             {...restProps}
             onChange={(e) => {
-                const newRowsPerPage = parseInt(e.target.value)
-                setRowsPerPage(newRowsPerPage)
+                const value = e.target.value
+                const rowsPerPage = value === "all" ? "all": parseInt(value)
+                setRowsPerPage(rowsPerPage)
             }}
         >
             {children}

@@ -1,6 +1,6 @@
 import { useMemo } from "react"
 import getDataTypes from "../../helpers/dataTypes"
-import objectIsEmpty from "../../helpers/objectIsEmpty"
+import { objectIsEmpty } from "../../helpers/isEmptyData"
 
 import { Container } from "./style"
 

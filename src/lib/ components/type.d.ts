@@ -75,7 +75,7 @@ interface ISlicer {
 }
 
 interface ISlicerSelect extends RestProps {
-    setRowsPerPage: React.Dispatch<React.SetStateAction<number>>
+    setRowsPerPage: React.Dispatch<React.SetStateAction<number | "all">>
     children?: React.ReactNode
 }
 
@@ -123,4 +123,5 @@ interface IRowCounter {
     startRow: number,
     endRow: number,
     maxEntries: number,
+    tableIsEmpty: boolean,
 }

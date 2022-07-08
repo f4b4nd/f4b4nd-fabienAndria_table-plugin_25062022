@@ -1,9 +1,9 @@
-const getRangeDataRowByPage = (page: number, tableLength: number, rowsPerPage: number) => {
+const getRangeDataRowByPage = (page: number, tableLength: number, rowsPerPage: number | "all") => {
     
     let startRow: number
     let endRow : number
 
-    if (!rowsPerPage) {
+    if (rowsPerPage === "all") {
         startRow = 0
         endRow = tableLength
         return [startRow, endRow]
