@@ -1,7 +1,7 @@
 import { TableWrapper } from "../lib"
 
 import JSONData from './fixtures/employees.json'
-import EmptyJSONData from './fixtures/emptyEmployees.json'
+//import EmptyJSONData from './fixtures/emptyEmployees.json'
 
 export default function TableExample () {
 

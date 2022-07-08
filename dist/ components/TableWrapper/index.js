@@ -12,8 +12,7 @@ const Table_1 = __importDefault(require("../Table"));
 const slicer_1 = __importDefault(require("../../containers/slicer"));
 const Searchbar_1 = __importDefault(require("../Searchbar"));
 const Pagination_1 = __importDefault(require("../Pagination"));
-//import JSONData from '../../fixtures/employees.json'
-//const initialData = JSONData.slice(0, 150)
+const RowCounter_1 = __importDefault(require("../RowCounter"));
 function TableWrapper({ initialData }) {
     const [results, setResults] = (0, react_1.useState)(initialData);
     const [rowsPerPage, setRowsPerPage] = (0, react_1.useState)(NaN);
@@ -28,6 +27,6 @@ function TableWrapper({ initialData }) {
         const newPagesCount = hasPages ? Math.ceil(results.length / rowsPerPage) : 1;
         setPagesCount(newPagesCount);
     }, [activePage, results, rowsPerPage]);
-    return ((0, jsx_runtime_1.jsxs)(style_1.Container, { className: "table-container", children: [(0, jsx_runtime_1.jsxs)(style_1.Row, { className: "row", children: [(0, jsx_runtime_1.jsx)(slicer_1.default, { setRowsPerPage: setRowsPerPage }), (0, jsx_runtime_1.jsx)(Searchbar_1.default, { initialData: initialData, setResults: setResults })] }), (0, jsx_runtime_1.jsx)(Table_1.default, { results: activePageResults, setResults: setResults }), (0, jsx_runtime_1.jsx)(Pagination_1.default, { activePage: activePage, setActivePage: setActivePage, pagesCount: pagesCount })] }));
+    return ((0, jsx_runtime_1.jsxs)(style_1.Container, { className: "table-container", children: [(0, jsx_runtime_1.jsxs)(style_1.Row, { className: "row", children: [(0, jsx_runtime_1.jsx)(slicer_1.default, { setRowsPerPage: setRowsPerPage }), (0, jsx_runtime_1.jsx)(Searchbar_1.default, { initialData: initialData, setResults: setResults })] }), (0, jsx_runtime_1.jsx)(Table_1.default, { results: activePageResults, setResults: setResults }), (0, jsx_runtime_1.jsxs)(style_1.Row, { className: "row", children: [(0, jsx_runtime_1.jsx)(RowCounter_1.default, { startRow: results.length > 0 ? 1 + rangeOfActivePageResults.startRow : 0, endRow: rangeOfActivePageResults.endRow, maxEntries: results.length }), (0, jsx_runtime_1.jsx)(Pagination_1.default, { activePage: activePage, setActivePage: setActivePage, pagesCount: pagesCount })] })] }));
 }
 exports.TableWrapper = TableWrapper;

@@ -8,13 +8,13 @@ const styled_components_1 = __importDefault(require("styled-components"));
 const colors_1 = require("../../constants/colors");
 exports.Container = styled_components_1.default.div `
     margin: 1em 0;
-    display: flex;
-    justify-content: flex-end;
 `;
 exports.Inner = styled_components_1.default.div `
     display: flex;
     align-items: center;
     column-gap: 0.5em;
+    padding: 0;
+    margin: 0;
 `;
 exports.Page = styled_components_1.default.div `
     font-size: 1em;
